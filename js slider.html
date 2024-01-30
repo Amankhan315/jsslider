@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>js slider</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        .main {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: wheat;
+            /* border: 1px solid; */
+        }
+
+        .sliderbox {
+            height: 80vh;
+            width: 80%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 2px solid red; */
+            
+        }
+        
+        .slider {
+            height: 80vh;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: all 0.5s linear;
+            /* border: 2px solid black; */
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .img1 {
+            height: 100%;
+            width: 100%;
+        }
+
+        .circle {
+            height: 50px;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bolder;
+            border-radius: 50px;
+            background-color: white;
+            cursor: pointer;
+            /* border: 1px solid; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="circle">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
+        <div class="sliderbox">
+            <div class="slider">
+                <img class="img1" src="./1.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img class="img1" src="./2.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img class="img1" src="./3.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img class="img1" src="./4.jpg" alt="">
+            </div>
+            <div class="slider">
+                <img class="img1" src="./1.jpg" alt="">
+            </div>
+        </div>
+        <div class="circle">
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </div>
+    </div>
+
+
+
+    <script>
+
+        let left = document.querySelector(".fa-chevron-left")
+        console.log(left);
+
+        let slide = document.querySelectorAll(".slider")
+        console.log(slide);
+
+        let right = document.querySelector(".fa-chevron-right")
+
+
+        let idx = 0
+
+        left.addEventListener("click", function () {
+
+            idx--
+            console.log(idx, "Index");
+
+
+            if (idx < 0) {
+
+                idx = slide.length - 1
+
+
+            }
+            removeALL()
+
+            slide[idx].classList.add("show")
+        })
+
+        function removeALL() {
+
+            slide.forEach(function (el, id) {
+
+
+                el.classList.remove("show")
+
+            })
+
+        }
+        right.addEventListener("click", function () {
+
+            idx++
+            console.log(idx, "Index");
+
+            if (idx > slide.length - 1) {
+
+                idx = 0
+
+
+            }
+            removeALL()
+
+            slide[idx].classList.add("show")
+
+
+
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>
